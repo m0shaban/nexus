@@ -1,5 +1,9 @@
 #!/bin/bash
 # Telegram Webhook Setup Script
+# Load environment variables
+if [ -f .env.local ]; then
+  source .env.local
+fi
 # Make sure to set your environment variables first
 
 if [ -z "$TELEGRAM_BOT_TOKEN" ]; then

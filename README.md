@@ -1,5 +1,8 @@
 # Nexus MVP - The Synapse
 
+[![Vercel Deployment](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/USERNAME/nexus)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 > **«حوِّل الفوضى إلى فهم، والفهم إلى تأثير.»**
 
 نظام ذكي لتنظيم الأفكار وتحويلها إلى مشاريع قابلة للتنفيذ. هذا هو الإصدار التجريبي الأول (MVP) من وحدة "The Synapse" - المشبك العصبي.
