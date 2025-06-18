@@ -259,52 +259,29 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
   }  // Floating button when closed
   if (!isOpen) {
     return (
-      <AnimatePresence>
-        <motion.div 
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0, opacity: 0 }}
-          transition={{ 
-            type: "spring", 
-            stiffness: 260, 
-            damping: 20,
-            duration: 0.3 
-          }}
-          className={`fixed bottom-6 right-6 z-50 ${className}`}
+      <div className={`fixed bottom-6 right-6 z-50 ${className || ''}`}>
+        <button
+          onClick={() => setIsOpen(true)}
+          className="w-14 h-14 bg-blue-600 hover:bg-blue-700 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:scale-95"
+          aria-label="فتح الشاتبوت"
         >
-          <div className="relative group">
-            <Button
-              onClick={() => setIsOpen(true)}
-              size="lg"
-              className="rounded-full w-16 h-16 shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 border-0 p-0 overflow-hidden transform hover:scale-110 active:scale-95"
-            >
-              <AdvancedLogosIcon variant="neural" size="lg" animated />
-            </Button>
-            
-            {/* Enhanced tooltip */}
-            <motion.div 
-              initial={{ opacity: 0, y: 10, scale: 0.8 }}
-              whileHover={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.2 }}
-              className="absolute -top-16 -left-12 bg-gray-900/95 text-white text-sm px-4 py-3 rounded-xl shadow-xl backdrop-blur-md border border-gray-700 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none min-w-max"
-            >
-              <div className="font-semibold text-white">🧠 اللوغوس</div>
-              <div className="text-xs text-gray-300">المستشار الاستراتيجي الذكي</div>
-              <div className="text-xs text-purple-300 mt-1">• تحليل ذكي للبيانات</div>
-              <div className="text-xs text-blue-300">• استراتيجيات مخصصة</div>
-              
-              {/* Tooltip arrow */}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
-            </motion.div>
-
-            {/* Pulse effect */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 opacity-75 animate-ping"></div>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 opacity-50 animate-pulse"></div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+          <svg
+            className="w-6 h-6 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+            />
+          </svg>
+        </button>
+      </div>
     )
-  }  // Chat interface when open
+  }// Chat interface when open
   return (
     <AnimatePresence>
       <motion.div 
@@ -317,7 +294,7 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
           damping: 30,
           duration: 0.4 
         }}
-        className={`fixed bottom-6 right-6 z-50 ${className}`}
+        className={`fixed bottom-6 right-6 z-50 ${className || ''}`}
       >
         <motion.div
           animate={{ height: isMinimized ? 'auto' : '600px' }}

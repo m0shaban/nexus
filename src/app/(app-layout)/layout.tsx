@@ -18,9 +18,8 @@ export default function AppLayout({
           <MainNavigation />
           <main className="flex-grow">
             {children}
-          </main>
-          {/* The Logos AI - Always available floating chatbot */}
-          <LogosFloatingChat />
+          </main>          {/* The Logos AI - Always available floating chatbot */}
+          <LogosFloatingChat className="" />
         </div>
         <Toaster />
       </ToastProvider>

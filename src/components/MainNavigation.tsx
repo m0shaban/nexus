@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { CheckSquare, Home, Eye, User, Github, Sparkles, FileText } from 'lucide-react'
+import { CheckSquare, Home, Eye, User, Sparkles, FileText } from 'lucide-react'
 
 export function MainNavigation() {
   const pathname = usePathname()
@@ -106,15 +106,11 @@ export function MainNavigation() {
       <div className="flex-1"></div>
       
       <Button
-        variant="outline"
         size="sm"
         asChild
         className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-200"
       >
-        <a href="https://github.com/yourusername/nexus" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-          <Github className="h-4 w-4" />
-          <span className="hidden sm:inline">GitHub</span>
-        </a>
+        {/* زر GitHub تم حذفه بناءً على طلب المستخدم */}
       </Button>
     </nav>
   )
