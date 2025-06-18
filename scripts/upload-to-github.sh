@@ -25,7 +25,7 @@ fi
 echo "✅ التحقق من المتطلبات..."
 
 # اسم المستودع
-REPO_NAME="nexus-productivity-system"
+REPO_NAME="nexus"
 echo "📁 اسم المستودع: $REPO_NAME"
 
 # طلب username من المستخدم
@@ -92,17 +92,51 @@ git branch -M main
 # رفع المشروع
 echo "⬆️ رفع المشروع على GitHub..."
 if git push -u origin main; then
+    
+    # إنشاء تاغ v2.0
+    echo "🏷️ إنشاء تاغ الإصدار v2.0..."
+    git tag -a "v2.0" -m "🎨 NEXUS v2.0: Advanced Neural Icons & Enhanced UI
+
+✨ Major Features:
+- Advanced LogosIcon with neural network animations
+- Quantum and Matrix visual effects
+- Enhanced CSS animations (spin-slow, neural-pulse)
+- Unified Logos AI experience
+- Modern gradient effects (conic, radial)
+
+🔒 © 2025 محمد شعبان - Commercial License Required
+📧 Contact: ENG.MOHAMED0SHABAN@GMAIL.COM"
+
+    git push origin v2.0
+    
     echo ""
-    echo "🎉 تم رفع المشروع بنجاح!"
+    echo "🎉 تم رفع NEXUS v2.0 بنجاح!"
     echo ""
     echo "🔗 رابط المستودع:"
     echo "   https://github.com/$GITHUB_USERNAME/$REPO_NAME"
     echo ""
+    
+    # تنبيه خاص لتحديث Vercel
+    echo "� تنبيه مهم - تحديث Vercel:"
+    echo "   إذا كان لديك نسخة منشورة على Vercel، تأكد من:"
+    echo "   1. 🔄 إعادة النشر على Vercel لتحديث الأيقونات الجديدة"
+    echo "   2. 🎨 التأكد من ظهور الأيقونات المتقدمة (Neural Network)"
+    echo "   3. ⚡ اختبار الحركات والتأثيرات البصرية الجديدة"
+    echo "   4. 🌐 مراجعة https://vercel.com/dashboard للنشر"
+    echo ""
+    
+    echo "✨ ميزات v2.0 الجديدة:"
+    echo "   🧠 أيقونات Neural Network متحركة"
+    echo "   ⚛️ تأثيرات Quantum و Matrix"
+    echo "   🌟 حركات CSS متقدمة (spin-slow, neural-pulse)"
+    echo "   💫 Gradients مخصصة (conic, radial)"
+    echo ""
+    
     echo "📝 الخطوات التالية:"
-    echo "   1. اذهب إلى المستودع على GitHub"
-    echo "   2. أضف وصف للمستودع"
-    echo "   3. فعّل GitHub Pages (اختياري)"
-    echo "   4. راجع ملف UPLOAD_TO_GITHUB.md للتفاصيل"
+    echo "   1. 📋 أضف وصف للمستودع مع 'v2.0 Advanced Icons'"
+    echo "   2. 🏷️ تحقق من Release v2.0 في GitHub"
+    echo "   3. 🌐 حديث Vercel من GitHub"
+    echo "   4. 📖 راجع docs/LOGOS_ICONS_ENHANCEMENT.md"
     echo ""
     echo "📞 للاستخدام التجاري تواصل مع:"
     echo "   محمد شعبان - ENG.MOHAMED0SHABAN@GMAIL.COM"

@@ -11,7 +11,7 @@
 ### 1️⃣ إنشاء Repository جديد على GitHub
 
 1. **اذهب إلى:** https://github.com/new
-2. **اسم المستودع:** `nexus-productivity-system`
+2. **اسم المستودع:** `nexus`
 3. **الوصف:** 
    ```
    🌟 NEXUS - Smart Productivity Management System | نظام إدارة الإنتاجية الذكي
@@ -27,7 +27,7 @@
 cd "f:\aai\عمفقش\New folder (2)\nexus"
 
 # إضافة remote repository
-git remote add origin https://github.com/USERNAME/nexus-productivity-system.git
+git remote add origin https://github.com/USERNAME/nexus.git
 
 # تعيين branch رئيسي
 git branch -M main
@@ -152,9 +152,9 @@ productivity, ai, nextjs, typescript, supabase, notes, projects, habits, arabic,
 
 ## 🔗 روابط مهمة بعد النشر
 
-- **Repository:** https://github.com/USERNAME/nexus-productivity-system
-- **Issues:** https://github.com/USERNAME/nexus-productivity-system/issues
-- **Releases:** https://github.com/USERNAME/nexus-productivity-system/releases
+- **Repository:** https://github.com/USERNAME/nexus
+- **Issues:** https://github.com/USERNAME/nexus/issues
+- **Releases:** https://github.com/USERNAME/nexus/releases
 - **Documentation:** في مجلد `docs/`
 
 ---

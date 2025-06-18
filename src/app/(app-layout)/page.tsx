@@ -8,8 +8,6 @@ import { ConvertNoteModal } from '@/components/ConvertNoteModal'
 import { ClientNotesDisplay } from '@/components/ClientNotesDisplay'
 import { ProfessionalNoteTaker } from '@/components/ProfessionalNoteTaker'
 import { ErrorState } from '@/components/ErrorState'
-import { LogosChat } from '@/components/LogosChat'
-import { useLogosChat } from '@/hooks/useLogosChat'
 import { ArrowRight, Lightbulb, CheckCircle2, FileText, Zap, Target } from 'lucide-react'
 
 function checkEnvironmentConfig() {
@@ -38,7 +36,6 @@ function checkEnvironmentConfig() {
 export default function Home() {
   const envCheck = checkEnvironmentConfig()
   const [showConvert, setShowConvert] = useState(false)
-  const { isChatOpen, isMinimized, toggleChat } = useLogosChat()
 
   if (!envCheck.isValid) {
     return (
@@ -169,29 +166,14 @@ export default function Home() {
               <div className="text-sm text-muted-foreground">إنطلاق سريع</div>
             </div>
           </div>
-        </div>
-      </section>      <section className="space-y-6">
+        </div>      </section>
+
+      <section className="space-y-6">
         <ProfessionalNoteTaker />
         <ClientNotesDisplay />
-      </section>      <ConvertNoteModal isOpen={showConvert} onClose={() => setShowConvert(false)} />
-      
-      {/* Logos AI Chat */}
-      {isChatOpen && (
-        <LogosChat 
-          isMinimized={isMinimized}
-          onToggleMinimize={toggleChat}
-          userId="demo-user"
-        />
-      )}
-      
-      {/* Chat Toggle Button */}
-      {!isChatOpen && (
-        <LogosChat 
-          isMinimized={true}
-          onToggleMinimize={toggleChat}
-          userId="demo-user"
-        />
-      )}
+      </section>
+
+      <ConvertNoteModal isOpen={showConvert} onClose={() => setShowConvert(false)} />
     </div>
   )
 }

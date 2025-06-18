@@ -47,21 +47,21 @@ if (-Not (Test-Path ".git")) {
     Write-Host "📝 تهيئة Git repository..." -ForegroundColor Blue
     git init
     git add .
-      $commitMessage = @"
-🎉 NEXUS v2.0: Advanced Icons & Enhanced UI
+    
+    $commitMessage = "🎉 NEXUS v2.0: Advanced Icons and Enhanced UI
 
 ✨ Major Updates v2.0:
-- 🎨 Advanced Neural Network Icons with animations
-- 🧠 AdvancedLogosIcon component (neural, quantum, matrix variants)
-- � Enhanced visual effects and CSS animations
-- 💫 Quantum interference and neural pulse effects
-- � Spin-slow animations and gradient enhancements
+- Advanced Neural Network Icons with animations
+- AdvancedLogosIcon component (neural, quantum, matrix variants)
+- Enhanced visual effects and CSS animations
+- Quantum interference and neural pulse effects
+- Spin-slow animations and gradient enhancements
 
 🤖 Logos AI Enhancements:
-- 📝 Unified welcome message across all components
-- 🎯 Specialized strategic consultation focus
-- ⚡ Enhanced floating chat with neural animations
-- 🌊 Smooth transitions and hover effects
+- Unified welcome message across all components
+- Specialized strategic consultation focus
+- Enhanced floating chat with neural animations
+- Smooth transitions and hover effects
 
 🏗️ Tech Stack v2.0:
 - Next.js 15.3.3 + TypeScript
@@ -81,8 +81,7 @@ if (-Not (Test-Path ".git")) {
 - Email: ENG.MOHAMED0SHABAN@GMAIL.COM
 - LinkedIn: https://www.linkedin.com/in/moshabann/
 
-🚀 Ready for production deployment with enhanced UI
-"@
+🚀 Ready for production deployment with enhanced UI"
     
     git commit -m $commitMessage
 }
@@ -106,7 +105,7 @@ try {
     
     # إنشاء تاغ v2.0
     Write-Host "🏷️ إنشاء تاغ الإصدار v2.0..." -ForegroundColor Blue
-    git tag -a "v2.0" -m "🎨 NEXUS v2.0: Advanced Neural Icons & Enhanced UI
+    $tagMessage = "🎨 NEXUS v2.0: Advanced Neural Icons and Enhanced UI
 
 ✨ Major Features:
 - Advanced LogosIcon with neural network animations
@@ -118,6 +117,7 @@ try {
 🔒 © 2025 محمد شعبان - Commercial License Required
 📧 Contact: ENG.MOHAMED0SHABAN@GMAIL.COM"
 
+    git tag -a "v2.0" -m $tagMessage
     git push origin v2.0
     
     Write-Host ""
@@ -128,7 +128,7 @@ try {
     Write-Host ""
     
     # تنبيه خاص لتحديث Vercel
-    Write-Host "� تنبيه مهم - تحديث Vercel:" -ForegroundColor Red
+    Write-Host "🚨 تنبيه مهم - تحديث Vercel:" -ForegroundColor Red
     Write-Host "   إذا كان لديك نسخة منشورة على Vercel، تأكد من:" -ForegroundColor Yellow
     Write-Host "   1. 🔄 إعادة النشر على Vercel لتحديث الأيقونات الجديدة" -ForegroundColor White
     Write-Host "   2. 🎨 التأكد من ظهور الأيقونات المتقدمة (Neural Network)" -ForegroundColor White
@@ -145,7 +145,7 @@ try {
     
     Write-Host "📝 الخطوات التالية:" -ForegroundColor Yellow
     Write-Host "   1. 📋 أضف وصف للمستودع مع 'v2.0 Advanced Icons'" -ForegroundColor White
-    Write-Host "   2. 🏷️ أنشئ Release v2.0 مع changelog" -ForegroundColor White
+    Write-Host "   2. 🏷️ تحقق من Release v2.0 في GitHub" -ForegroundColor White
     Write-Host "   3. 🌐 حديث Vercel من GitHub" -ForegroundColor White
     Write-Host "   4. 📖 راجع docs/LOGOS_ICONS_ENHANCEMENT.md" -ForegroundColor White
     Write-Host ""

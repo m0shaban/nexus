@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge'
 import { useToast } from '@/components/ui/use-toast'
 import { AdvancedLogosIcon } from '@/components/AdvancedLogosIcon'
 import { LogosConversation, LogosMessage, LogosUserPreferences } from '@/types/database'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   MessageCircle, 
   X, 
@@ -255,37 +256,92 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
       case 'low': return 'bg-gray-100 text-gray-800'
       default: return 'bg-blue-100 text-blue-800'
     }
-  }
-  // Floating button when closed
+  }  // Floating button when closed
   if (!isOpen) {
     return (
-      <div className={`fixed bottom-6 right-6 z-50 ${className}`}>        <Button
-          onClick={() => setIsOpen(true)}
-          size="lg"
-          className="rounded-full w-16 h-16 shadow-xl hover:shadow-2xl transition-all duration-300 bg-transparent hover:bg-white/10 border-0 p-0 overflow-hidden"
+      <AnimatePresence>
+        <motion.div 
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 260, 
+            damping: 20,
+            duration: 0.3 
+          }}
+          className={`fixed bottom-6 right-6 z-50 ${className}`}
         >
-          <AdvancedLogosIcon variant="neural" size="lg" animated />
-        </Button>
-        <div className="absolute -top-14 -left-12 bg-gray-900 text-white text-sm px-4 py-2 rounded-xl opacity-0 hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
-          <div className="font-semibold">اللوغوس</div>
-          <div className="text-xs text-gray-300">المستشار الاستراتيجي الذكي</div>
-        </div>
-      </div>
+          <div className="relative group">
+            <Button
+              onClick={() => setIsOpen(true)}
+              size="lg"
+              className="rounded-full w-16 h-16 shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 border-0 p-0 overflow-hidden transform hover:scale-110 active:scale-95"
+            >
+              <AdvancedLogosIcon variant="neural" size="lg" animated />
+            </Button>
+            
+            {/* Enhanced tooltip */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+              whileHover={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.2 }}
+              className="absolute -top-16 -left-12 bg-gray-900/95 text-white text-sm px-4 py-3 rounded-xl shadow-xl backdrop-blur-md border border-gray-700 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none min-w-max"
+            >
+              <div className="font-semibold text-white">🧠 اللوغوس</div>
+              <div className="text-xs text-gray-300">المستشار الاستراتيجي الذكي</div>
+              <div className="text-xs text-purple-300 mt-1">• تحليل ذكي للبيانات</div>
+              <div className="text-xs text-blue-300">• استراتيجيات مخصصة</div>
+              
+              {/* Tooltip arrow */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/95"></div>
+            </motion.div>
+
+            {/* Pulse effect */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 opacity-75 animate-ping"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 opacity-50 animate-pulse"></div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     )
-  }
-  // Chat interface when open
+  }  // Chat interface when open
   return (
-    <div className={`fixed bottom-6 right-6 z-50 ${className}`}>
-      <Card className={`w-96 transition-all duration-300 shadow-2xl border-2 border-gray-200 bg-white/95 backdrop-blur-md ${
-        isMinimized ? 'h-14' : 'h-[600px]'
-      }`}>
-        {/* Header */}        <CardHeader className="pb-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white rounded-t-lg border-b">
-          <div className="flex items-center justify-between">            <div className="flex items-center gap-3">
-              <div className="relative">
-                <AdvancedLogosIcon variant="neural" size="md" animated />
-                {/* Online status indicator */}
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse shadow-lg"></div>
+    <AnimatePresence>
+      <motion.div 
+        initial={{ scale: 0.8, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.8, opacity: 0, y: 20 }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 300, 
+          damping: 30,
+          duration: 0.4 
+        }}
+        className={`fixed bottom-6 right-6 z-50 ${className}`}
+      >
+        <motion.div
+          animate={{ height: isMinimized ? 'auto' : '600px' }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          <Card className={`w-96 shadow-2xl border-2 border-gray-200/50 bg-white/95 backdrop-blur-md overflow-hidden ${
+            isMinimized ? 'h-auto' : 'h-[600px]'
+          }`}>
+            {/* Enhanced Header */}
+            <CardHeader className="pb-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white border-b relative overflow-hidden">
+              {/* Background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent"></div>
               </div>
+              
+              <div className="flex items-center justify-between relative z-10">
+                <div className="flex items-center gap-3">
+                  <div className="relative">
+                    <AdvancedLogosIcon variant="neural" size="md" animated />
+                    {/* Enhanced online status indicator */}
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white shadow-lg">
+                      <div className="w-full h-full bg-green-400 rounded-full animate-ping"></div>
+                    </div>
+                  </div>
               <div>
                 <CardTitle className="text-lg font-bold">اللوغوس</CardTitle>
                 <p className="text-xs text-white/80">المستشار الاستراتيجي الذكي</p>
@@ -296,31 +352,47 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
                   استراتيجي
                 </Badge>
               )}
-            </div>
-            <div className="flex items-center gap-1">
+            </div>            <div className="flex items-center gap-1">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMinimized(!isMinimized)}
-                className="text-white hover:bg-white/20 h-8 w-8 p-0 transition-all duration-200"
+                className="text-white hover:bg-white/20 h-8 w-8 p-0 transition-all duration-300 hover:scale-110 active:scale-95"
               >
-                {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
+                <motion.div
+                  animate={{ rotate: isMinimized ? 0 : 180 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
+                </motion.div>
               </Button>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white/20 hover:bg-red-500/30 h-8 w-8 p-0 transition-all duration-200"
+                className="text-white hover:bg-red-500/30 h-8 w-8 p-0 transition-all duration-300 hover:scale-110 active:scale-95"
               >
-                <X className="h-4 w-4" />
+                <motion.div
+                  whileHover={{ rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-4 w-4" />
+                </motion.div>
               </Button>
             </div>
           </div>
         </CardHeader>        {/* Content - only show when not minimized */}
-        {!isMinimized && (
-          <CardContent className="p-0 flex flex-col h-[536px] bg-white/90 backdrop-blur-sm">
-            {/* Conversation list or chat */}
-            {!currentConversation ? (
+        <AnimatePresence>
+          {!isMinimized && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <CardContent className="p-0 flex flex-col h-[536px] bg-white/90 backdrop-blur-sm">
+                {/* Conversation list or chat */}
+                {!currentConversation ? (
               // Conversation list
               <div className="flex-1 p-4 bg-gradient-to-b from-gray-50/50 to-white/50">
                 <div className="flex items-center justify-between mb-4">
@@ -554,8 +626,7 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
                         </div>
                       )}
                     </Button>
-                  </div>
-                  
+                  </div>                  
                   {preferences?.enable_cross_module_analysis && (
                     <div className="mt-3 flex items-center gap-2 text-xs text-gray-500">
                       <Eye className="h-3 w-3" />
@@ -564,9 +635,14 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
                   )}
                 </div>
               </div>
-            )}          </CardContent>
-        )}
+            )}
+              </CardContent>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </Card>
-    </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   )
 }
