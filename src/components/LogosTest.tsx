@@ -133,7 +133,7 @@ export default function LogosTest({ className }: LogosTestProps) {
               <Input
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="اكتب رسالة للاختبار..."
+                placeholder="مرحباً اللوغوس، أريد استشارة استراتيجية حول..."
                 className="text-right"
                 dir="rtl"
               />

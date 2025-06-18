@@ -256,7 +256,6 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
       default: return 'bg-blue-100 text-blue-800'
     }
   }
-
   // Floating button when closed
   if (!isOpen) {
     return (
@@ -264,12 +263,13 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
         <Button
           onClick={() => setIsOpen(true)}
           size="lg"
-          className="rounded-full w-16 h-16 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+          className="rounded-full w-16 h-16 shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 animate-pulse hover:animate-none"
         >
-          <Brain className="h-8 w-8 text-white" />
+          <Brain className="h-8 w-8 text-white drop-shadow-sm" />
         </Button>
-        <div className="absolute -top-12 -left-8 bg-black text-white text-sm px-3 py-1 rounded-lg opacity-0 hover:opacity-100 transition-opacity pointer-events-none">
-          The Logos AI
+        <div className="absolute -top-14 -left-12 bg-gray-900 text-white text-sm px-4 py-2 rounded-xl opacity-0 hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+          <div className="font-semibold">اللوغوس</div>
+          <div className="text-xs text-gray-300">المستشار الاستراتيجي الذكي</div>
         </div>
       </div>
     )
