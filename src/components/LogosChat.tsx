@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
+import { AdvancedLogosIcon } from '@/components/AdvancedLogosIcon'
 import { Bot, Send, MessageCircle, User, Loader2, AlertCircle, Sparkles } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -251,11 +252,8 @@ export function LogosChat({ isMinimized = false, onToggleMinimize, userId = '123
     >
       <Card className="h-full flex flex-col shadow-2xl border-2 border-primary/10">
         <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center">
-                <Bot className="h-5 w-5" />
-              </div>
+          <div className="flex items-center justify-between">            <div className="flex items-center gap-3">
+              <AdvancedLogosIcon variant="neural" size="sm" animated />
               <div>
                 <CardTitle className="text-lg font-bold">اللوغوس</CardTitle>
                 <div className="flex items-center gap-2 text-sm text-blue-100">

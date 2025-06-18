@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { useToast } from '@/components/ui/use-toast'
-import { CharacterAvatar } from '@/components/CharacterAvatar'
+import { AdvancedLogosIcon } from '@/components/AdvancedLogosIcon'
 import { LogosConversation, LogosMessage, LogosUserPreferences } from '@/types/database'
 import { 
   MessageCircle, 
@@ -259,13 +259,12 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
   // Floating button when closed
   if (!isOpen) {
     return (
-      <div className={`fixed bottom-6 right-6 z-50 ${className}`}>
-        <Button
+      <div className={`fixed bottom-6 right-6 z-50 ${className}`}>        <Button
           onClick={() => setIsOpen(true)}
           size="lg"
-          className="rounded-full w-16 h-16 shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 animate-pulse hover:animate-none"
+          className="rounded-full w-16 h-16 shadow-xl hover:shadow-2xl transition-all duration-300 bg-transparent hover:bg-white/10 border-0 p-0 overflow-hidden"
         >
-          <Brain className="h-8 w-8 text-white drop-shadow-sm" />
+          <AdvancedLogosIcon variant="neural" size="lg" animated />
         </Button>
         <div className="absolute -top-14 -left-12 bg-gray-900 text-white text-sm px-4 py-2 rounded-xl opacity-0 hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
           <div className="font-semibold">اللوغوس</div>
@@ -281,17 +280,11 @@ export function LogosFloatingChat({ className }: LogosFloatingChatProps) {
         isMinimized ? 'h-14' : 'h-[600px]'
       }`}>
         {/* Header */}        <CardHeader className="pb-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white rounded-t-lg border-b">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between">            <div className="flex items-center gap-3">
               <div className="relative">
-                <CharacterAvatar 
-                  character="logos" 
-                  mood="default" 
-                  size="md" 
-                  animated
-                  className="ring-2 ring-white/30"
-                />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
+                <AdvancedLogosIcon variant="neural" size="md" animated />
+                {/* Online status indicator */}
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse shadow-lg"></div>
               </div>
               <div>
                 <CardTitle className="text-lg font-bold">اللوغوس</CardTitle>
