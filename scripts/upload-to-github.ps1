@@ -1,8 +1,10 @@
-# 🚀 NEXUS GitHub Upload Script (PowerShell)
+# 🚀 NEXUS GitHub Upload Script v2.0 (PowerShell)
 # المطور: محمد شعبان
+# الإصدار: v2.0 - محدث مع الأيقونات المتقدمة وتحسينات الواجهة
 # الهدف: رفع مشروع NEXUS على GitHub مع حماية الحقوق التجارية
 
-Write-Host "🌟 NEXUS - GitHub Upload Script" -ForegroundColor Green
+Write-Host "🌟 NEXUS - GitHub Upload Script v2.0" -ForegroundColor Green
+Write-Host "✨ التحديثات: أيقونات متقدمة + تحسينات واجهة المستخدم" -ForegroundColor Magenta
 Write-Host "© 2025 محمد شعبان - جميع الحقوق محفوظة" -ForegroundColor Yellow
 Write-Host "=============================================" -ForegroundColor Cyan
 
@@ -45,28 +47,33 @@ if (-Not (Test-Path ".git")) {
     Write-Host "📝 تهيئة Git repository..." -ForegroundColor Blue
     git init
     git add .
-    
-    $commitMessage = @"
-🎉 Initial commit: NEXUS Smart Productivity System
+      $commitMessage = @"
+🎉 NEXUS v2.0: Advanced Icons & Enhanced UI
 
-✨ Features:
-- 📝 Advanced Notes Management with Markdown editor
-- 📊 Intelligent Project Tracking with analytics  
-- 🎯 Habit Building with gamification
-- 🤖 AI Assistant (Logos) powered by NVIDIA
-- 📱 Modern responsive UI with Next.js 15
+✨ Major Updates v2.0:
+- 🎨 Advanced Neural Network Icons with animations
+- 🧠 AdvancedLogosIcon component (neural, quantum, matrix variants)
+- � Enhanced visual effects and CSS animations
+- 💫 Quantum interference and neural pulse effects
+- � Spin-slow animations and gradient enhancements
+
+🤖 Logos AI Enhancements:
+- 📝 Unified welcome message across all components
+- 🎯 Specialized strategic consultation focus
+- ⚡ Enhanced floating chat with neural animations
+- 🌊 Smooth transitions and hover effects
+
+🏗️ Tech Stack v2.0:
+- Next.js 15.3.3 + TypeScript
+- Supabase Database with RLS
+- NVIDIA AI Integration
+- Tailwind CSS + Advanced Animations
+- Neural Network Visual Effects
 
 🔒 Commercial Rights Protected:
 - © 2025 محمد شعبان (Mohamed Shaban)
 - Commercial use requires paid license
 - Contact: ENG.MOHAMED0SHABAN@GMAIL.COM
-
-🏗️ Tech Stack:
-- Next.js 15.3.3 + TypeScript
-- Supabase Database with RLS
-- NVIDIA AI Integration
-- Tailwind CSS + Framer Motion
-- Comprehensive testing suite
 
 📞 Contact Information:
 - Name: محمد شعبان (Mohamed Shaban)
@@ -74,7 +81,7 @@ if (-Not (Test-Path ".git")) {
 - Email: ENG.MOHAMED0SHABAN@GMAIL.COM
 - LinkedIn: https://www.linkedin.com/in/moshabann/
 
-🚀 Ready for production deployment
+🚀 Ready for production deployment with enhanced UI
 "@
     
     git commit -m $commitMessage
@@ -96,17 +103,51 @@ git branch -M main
 Write-Host "⬆️ رفع المشروع على GitHub..." -ForegroundColor Blue
 try {
     git push -u origin main
+    
+    # إنشاء تاغ v2.0
+    Write-Host "🏷️ إنشاء تاغ الإصدار v2.0..." -ForegroundColor Blue
+    git tag -a "v2.0" -m "🎨 NEXUS v2.0: Advanced Neural Icons & Enhanced UI
+
+✨ Major Features:
+- Advanced LogosIcon with neural network animations
+- Quantum and Matrix visual effects
+- Enhanced CSS animations (spin-slow, neural-pulse)
+- Unified Logos AI experience
+- Modern gradient effects (conic, radial)
+
+🔒 © 2025 محمد شعبان - Commercial License Required
+📧 Contact: ENG.MOHAMED0SHABAN@GMAIL.COM"
+
+    git push origin v2.0
+    
     Write-Host ""
-    Write-Host "🎉 تم رفع المشروع بنجاح!" -ForegroundColor Green
+    Write-Host "🎉 تم رفع NEXUS v2.0 بنجاح!" -ForegroundColor Green
     Write-Host ""
     Write-Host "🔗 رابط المستودع:" -ForegroundColor Cyan
     Write-Host "   https://github.com/$GITHUB_USERNAME/$REPO_NAME" -ForegroundColor White
     Write-Host ""
+    
+    # تنبيه خاص لتحديث Vercel
+    Write-Host "� تنبيه مهم - تحديث Vercel:" -ForegroundColor Red
+    Write-Host "   إذا كان لديك نسخة منشورة على Vercel، تأكد من:" -ForegroundColor Yellow
+    Write-Host "   1. 🔄 إعادة النشر على Vercel لتحديث الأيقونات الجديدة" -ForegroundColor White
+    Write-Host "   2. 🎨 التأكد من ظهور الأيقونات المتقدمة (Neural Network)" -ForegroundColor White
+    Write-Host "   3. ⚡ اختبار الحركات والتأثيرات البصرية الجديدة" -ForegroundColor White
+    Write-Host "   4. 🌐 مراجعة https://vercel.com/dashboard للنشر" -ForegroundColor White
+    Write-Host ""
+    
+    Write-Host "✨ ميزات v2.0 الجديدة:" -ForegroundColor Magenta
+    Write-Host "   🧠 أيقونات Neural Network متحركة" -ForegroundColor White
+    Write-Host "   ⚛️ تأثيرات Quantum و Matrix" -ForegroundColor White
+    Write-Host "   🌟 حركات CSS متقدمة (spin-slow, neural-pulse)" -ForegroundColor White
+    Write-Host "   💫 Gradients مخصصة (conic, radial)" -ForegroundColor White
+    Write-Host ""
+    
     Write-Host "📝 الخطوات التالية:" -ForegroundColor Yellow
-    Write-Host "   1. اذهب إلى المستودع على GitHub" -ForegroundColor White
-    Write-Host "   2. أضف وصف للمستودع" -ForegroundColor White
-    Write-Host "   3. فعّل GitHub Pages (اختياري)" -ForegroundColor White
-    Write-Host "   4. راجع ملف UPLOAD_TO_GITHUB.md للتفاصيل" -ForegroundColor White
+    Write-Host "   1. 📋 أضف وصف للمستودع مع 'v2.0 Advanced Icons'" -ForegroundColor White
+    Write-Host "   2. 🏷️ أنشئ Release v2.0 مع changelog" -ForegroundColor White
+    Write-Host "   3. 🌐 حديث Vercel من GitHub" -ForegroundColor White
+    Write-Host "   4. 📖 راجع docs/LOGOS_ICONS_ENHANCEMENT.md" -ForegroundColor White
     Write-Host ""
     Write-Host "📞 للاستخدام التجاري تواصل مع:" -ForegroundColor Magenta
     Write-Host "   محمد شعبان - ENG.MOHAMED0SHABAN@GMAIL.COM" -ForegroundColor White
@@ -127,6 +168,7 @@ try {
 }
 
 Write-Host "=============================================" -ForegroundColor Cyan
+Write-Host "🎨 NEXUS v2.0 - Enhanced with Neural Network Icons" -ForegroundColor Magenta
 Write-Host "© 2025 محمد شعبان - جميع الحقوق محفوظة" -ForegroundColor Yellow
 
 # توقف لعرض النتائج

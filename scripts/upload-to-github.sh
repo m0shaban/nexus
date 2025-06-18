@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# 🚀 NEXUS GitHub Upload Script
+# 🚀 NEXUS GitHub Upload Script v2.0
 # المطور: محمد شعبان
+# الإصدار: v2.0 - محدث مع الأيقونات المتقدمة وتحسينات الواجهة
 # الهدف: رفع مشروع NEXUS على GitHub مع حماية الحقوق التجارية
 
-echo "🌟 NEXUS - GitHub Upload Script"
+echo "🌟 NEXUS - GitHub Upload Script v2.0"
+echo "✨ التحديثات: أيقونات متقدمة + تحسينات واجهة المستخدم"
 echo "© 2025 محمد شعبان - جميع الحقوق محفوظة"
 echo "============================================="
 
@@ -43,26 +45,32 @@ if [ ! -d ".git" ]; then
     echo "📝 تهيئة Git repository..."
     git init
     git add .
-    git commit -m "🎉 Initial commit: NEXUS Smart Productivity System
+    git commit -m "🎉 NEXUS v2.0: Advanced Icons & Enhanced UI
 
-✨ Features:
-- 📝 Advanced Notes Management with Markdown editor
-- 📊 Intelligent Project Tracking with analytics  
-- 🎯 Habit Building with gamification
-- 🤖 AI Assistant (Logos) powered by NVIDIA
-- 📱 Modern responsive UI with Next.js 15
+✨ Major Updates v2.0:
+- 🎨 Advanced Neural Network Icons with animations
+- 🧠 AdvancedLogosIcon component (neural, quantum, matrix variants)
+- 🌟 Enhanced visual effects and CSS animations
+- 💫 Quantum interference and neural pulse effects
+- 🔄 Spin-slow animations and gradient enhancements
+
+🤖 Logos AI Enhancements:
+- � Unified welcome message across all components
+- 🎯 Specialized strategic consultation focus
+- ⚡ Enhanced floating chat with neural animations
+- 🌊 Smooth transitions and hover effects
+
+🏗️ Tech Stack v2.0:
+- Next.js 15.3.3 + TypeScript
+- Supabase Database with RLS
+- NVIDIA AI Integration
+- Tailwind CSS + Advanced Animations
+- Neural Network Visual Effects
 
 🔒 Commercial Rights Protected:
 - © 2025 محمد شعبان (Mohamed Shaban)
 - Commercial use requires paid license
 - Contact: ENG.MOHAMED0SHABAN@GMAIL.COM
-
-🏗️ Tech Stack:
-- Next.js 15.3.3 + TypeScript
-- Supabase Database with RLS
-- NVIDIA AI Integration
-- Tailwind CSS + Framer Motion
-- Comprehensive testing suite
 
 📞 Contact Information:
 - Name: محمد شعبان (Mohamed Shaban)
