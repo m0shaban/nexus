@@ -28,14 +28,13 @@ export function AppWrapper({ children }: AppWrapperProps) {
       setIsLoading(false)
     }, 300)
   }
-
   if (isLoading && showSplash) {
     return <SplashScreenSimple onComplete={handleSplashComplete} />
   }
 
   return (
-    <div className={`transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+    <>
       {children}
-    </div>
+    </>
   )
 }

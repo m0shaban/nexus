@@ -158,6 +158,34 @@ This platform represents significant intellectual property including proprietary
 
 ---
 
+# Project Nexus: An AI-Powered Productivity & Strategy Hub
+
+An integrated system designed to transform productivity management from a passive tracking activity into an intelligent, data-driven strategic process.
+
+<div align="center">
+
+[![🚀 Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_App-blue?style=for-the-badge&color=0066CC)](https://nexuss-rouge.vercel.app/)
+[![👨‍💻 For Developers](https://img.shields.io/badge/👨‍💻_For_Developers-Technical_Manual-green?style=for-the-badge&color=28a745)](https://github.com/m0shaban/nexus/blob/main/TECHNICAL_MANUAL.md)
+
+</div>
+
 *NEXUS: Where Strategic Vision Meets AI-Powered Execution*
 
 **The future of organizational performance is intelligent, integrated, and immediate.**
+
+---
+
+## 🔗 Quick Access Links
+
+### For Decision Makers:
+- **📊 [Live Demo](https://nexuss-rouge.vercel.app/)** - Experience the full NEXUS platform
+- **📈 Strategic Overview** - This document contains executive summary and ROI analysis
+
+### For Technical Teams:
+- **👨‍💻 [Technical Manual](https://github.com/m0shaban/nexus/blob/main/TECHNICAL_MANUAL.md)** - Complete development documentation
+- **🔧 [GitHub Repository](https://github.com/m0shaban/nexus)** - Source code and technical resources
+- **🚀 [Deployment Guide](https://github.com/m0shaban/nexus/blob/main/docs/UPLOAD_TO_GITHUB.md)** - Setup and deployment instructions
+
+---
+
+© 2025 Mohamed Shaban. All rights reserved. | [Contact](mailto:ENG.MOHAMED0SHABAN@GMAIL.COM) | [LinkedIn](https://www.linkedin.com/in/moshabann/)
