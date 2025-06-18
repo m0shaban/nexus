@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/test-results
+/playwright-report
 
 # next.js
 /.next/
@@ -19,10 +21,13 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
 *.pem
+.idea/
+.vscode/settings.json
 
 # debug
 npm-debug.log*
@@ -30,9 +35,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
 .env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # vercel
 .vercel
@@ -40,3 +48,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local database files
+*.sqlite
+*.sqlite3
+*.db
+
+# logs
+logs/
+*.log
+
+# backup files
+*.backup
+*.bak
+*.swp
+*.swo
+
+# Supabase
+.branches
+.temp

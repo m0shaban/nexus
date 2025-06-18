@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { useToast } from '@/components/ui/use-toast'
 import { Loader2, Brain } from 'lucide-react'
 
 interface AnalyzeButtonProps {
@@ -11,6 +12,7 @@ interface AnalyzeButtonProps {
 
 export function AnalyzeButton({ noteId, onAnalysisComplete }: AnalyzeButtonProps) {
   const [isAnalyzing, setIsAnalyzing] = useState(false)
+  const { toast } = useToast()
 
   const handleAnalyze = async () => {
     setIsAnalyzing(true)
@@ -33,9 +35,19 @@ export function AnalyzeButton({ noteId, onAnalysisComplete }: AnalyzeButtonProps
       if (onAnalysisComplete) {
         onAnalysisComplete(data.summary, data.questions)
       }
+
+      toast({
+        title: 'تم التحليل بنجاح! ✨',
+        description: 'تم تحليل الملاحظة وإنشاء الملخص والأسئلة',
+      })
+      
     } catch (error) {
       console.error('Analysis error:', error)
-      alert('حدث خطأ أثناء التحليل. يرجى المحاولة مرة أخرى.')
+      toast({
+        title: 'خطأ في التحليل',
+        description: 'حدث خطأ أثناء التحليل. يرجى المحاولة مرة أخرى.',
+        variant: 'destructive',
+      })
     } finally {
       setIsAnalyzing(false)
     }

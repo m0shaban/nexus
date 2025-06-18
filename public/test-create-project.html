@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>اختبار إنشاء مشروع</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>اختبار إنشاء مشروع</h1>
+    <button onclick="createTestProject()">إنشاء مشروع تجريبي</button>
+    <div id="result"></div>
+
+    <script>
+        async function createTestProject() {
+            try {
+                const response = await fetch('/api/projects', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: 'مشروع تجريبي ' + new Date().toLocaleString('ar'),
+                        description: 'هذا مشروع تجريبي للاختبار',
+                        status: 'active'
+                    })
+                });
+                
+                if (response.ok) {
+                    const project = await response.json();
+                    document.getElementById('result').innerHTML = 
+                        `<p>تم إنشاء المشروع بنجاح!</p>
+                         <p>ID: ${project.id}</p>
+                         <a href="/projects/${project.id}" target="_blank">عرض المشروع</a>`;
+                } else {
+                    const error = await response.json();
+                    document.getElementById('result').innerHTML = 
+                        `<p style="color: red;">خطأ: ${error.error}</p>`;
+                }
+            } catch (err) {
+                document.getElementById('result').innerHTML = 
+                    `<p style="color: red;">خطأ في الاتصال: ${err.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
