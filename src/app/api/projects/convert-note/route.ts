@@ -20,9 +20,7 @@ export async function POST(request: NextRequest) {
 
     if (fetchError || !note) {
       return NextResponse.json({ error: 'Note not found' }, { status: 404 })
-    }
-
-    // Create a new project linked to the note
+    }    // Create a new project linked to the note
     const { data: project, error: insertError } = await supabaseAdmin
       .from('projects')
       .insert({
@@ -37,9 +35,18 @@ export async function POST(request: NextRequest) {
       .single()
 
     if (insertError) {
-      console.error('[ConvertNoteAPI] Error creating project:', insertError)
+      console.error('[ConvertNoteAPI] Error creating project:', {
+        error: insertError,
+        details: insertError?.details,
+        message: insertError?.message,
+        code: insertError?.code
+      })
       return NextResponse.json(
-        { error: 'Failed to create project from note' },
+        { 
+          error: 'Failed to create project from note',
+          details: insertError?.message || 'Unknown database error',
+          code: insertError?.code || 'UNKNOWN_ERROR'
+        },
         { status: 500 }
       )
     }
@@ -98,18 +105,16 @@ ${projectDescription ? `وصف المشروع: "${projectDescription}"` : ''}
 
         if (response.ok) {
           const aiResponse = await response.json()
-          const taskContent = aiResponse.choices[0].message.content
-
-          // Parse AI response into tasks
+          const taskContent = aiResponse.choices[0].message.content          // Parse AI response into tasks
           const taskLines = taskContent
             .split('\n')
-            .filter(line => line.trim().length > 0)
-            .map(line => line.trim())
-            .filter(line => !line.match(/^[0-9][\.\)]/)) // Filter out any numbered items
+            .filter((line: string) => line.trim().length > 0)
+            .map((line: string) => line.trim())
+            .filter((line: string) => !line.match(/^[0-9][\.\)]/)) // Filter out any numbered items
           
           // Create the tasks
           if (taskLines.length > 0) {
-            const tasks = taskLines.map((content, index) => ({
+            const tasks = taskLines.map((content: string, index: number) => ({
               content,
               order_index: index,
               project_id: project.id,
