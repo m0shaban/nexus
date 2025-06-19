@@ -61,12 +61,12 @@ export function ConvertNoteModal({ isOpen, onClose, onConversionComplete, preSel
   }, [isOpen, toast])
 
   // Handle pre-selected note
-  useEffect(() => {
-    if (preSelectedNote && isOpen) {
+  useEffect(() => {    if (preSelectedNote && isOpen) {
       setSelectedNote(preSelectedNote)
     }
   }, [preSelectedNote, isOpen])
-    const convertNoteToProject = async (note: Note) => {
+
+  const convertNoteToProject = async (note: Note) => {
     setConverting(true)
     
     try {
@@ -87,24 +87,27 @@ export function ConvertNoteModal({ isOpen, onClose, onConversionComplete, preSel
       })
       
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.error || 'Failed to convert note to project')
+        const errorText = await response.text()
+        console.error('Convert note API error:', errorText)
+        throw new Error('فشل في تحويل الملاحظة إلى مشروع')
       }
       
-      const { project } = await response.json()
+      const data = await response.json()
       
-      if (!project || !project.id) {
-        throw new Error('Invalid project data received from server')
+      if (!data.success || !data.project || !data.project.id) {
+        throw new Error('بيانات المشروع غير صحيحة')
       }      toast({
         title: 'تم إنشاء المشروع',
         description: 'تم تحويل الملاحظة إلى مشروع بنجاح',
       })
-        // Call the completion callback if provided
+
+      // Call the completion callback if provided
       if (onConversionComplete) {
         onConversionComplete()
       }
-        // Redirect to the new project
-      router.push(`/projects/${project.id}`)
+
+      // Redirect to the new project
+      router.push(`/projects/${data.project.id}`)
     } catch (error) {
       console.error('Error converting note to project:', error)
       toast({
