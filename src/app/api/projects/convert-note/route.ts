@@ -21,26 +21,69 @@ export async function POST(request: NextRequest) {
     if (fetchError || !note) {
       return NextResponse.json({ error: 'Note not found' }, { status: 404 })
     }    // Create a new project linked to the note
-    const { data: project, error: insertError } = await supabaseAdmin
-      .from('projects')
-      .insert({
-        name: projectName,
-        description: projectDescription || null,
-        user_id: note.user_id,
-        note_id: noteId,
-        status: 'active',
-        priority: 'medium',
-      })
-      .select()
-      .single()
+    let project = null;
+    let insertError = null;
+    let attempts = 0;
+    const maxAttempts = 5;
 
-    if (insertError) {
+    // محاولة إنشاء المشروع مع إعادة المحاولة في حالة تضارب المفتاح
+    while (attempts < maxAttempts && !project) {
+      attempts++;
+      
+      const { data: projectData, error: currentError } = await supabaseAdmin
+        .from('projects')
+        .insert({
+          name: projectName,
+          description: projectDescription || null,
+          user_id: note.user_id,
+          note_id: noteId,
+          status: 'active',
+          priority: 'medium',
+          // السماح للـ trigger بتوليد project_key تلقائياً
+        })
+        .select()
+        .single()
+
+      if (currentError) {
+        // إذا كان الخطأ بسبب تضارب المفتاح، أعد المحاولة
+        if (currentError.code === '23505' && currentError.message?.includes('project_key')) {
+          console.log(`[ConvertNoteAPI] تضارب في مفتاح المشروع، محاولة ${attempts}/${maxAttempts}...`);
+          
+          // إضافة تأخير قصير قبل إعادة المحاولة
+          await new Promise(resolve => setTimeout(resolve, 100 * attempts));
+          continue;
+        } else {
+          // خطأ آخر غير متعلق بالمفتاح
+          insertError = currentError;
+          break;
+        }
+      } else {
+        // نجح الإنشاء
+        project = projectData;
+        break;
+      }
+    }    if (insertError || !project) {
       console.error('[ConvertNoteAPI] Error creating project:', {
         error: insertError,
         details: insertError?.details,
         message: insertError?.message,
-        code: insertError?.code
-      })
+        code: insertError?.code,
+        attempts: attempts
+      });
+      
+      // رسالة خطأ محددة لتضارب المفتاح
+      if (insertError?.code === '23505' && insertError?.message?.includes('project_key')) {
+        return NextResponse.json(
+          { 
+            error: 'Failed to create project due to key conflict',
+            details: 'تعذر إنشاء المشروع بسبب تضارب في المفتاح. يرجى المحاولة مرة أخرى.',
+            code: 'PROJECT_KEY_CONFLICT',
+            attempts: attempts
+          },
+          { status: 500 }
+        );
+      }
+      
       return NextResponse.json(
         { 
           error: 'Failed to create project from note',
@@ -48,7 +91,7 @@ export async function POST(request: NextRequest) {
           code: insertError?.code || 'UNKNOWN_ERROR'
         },
         { status: 500 }
-      )
+      );
     }
 
     // Initialize streak record for the new project

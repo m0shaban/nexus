@@ -85,11 +85,24 @@ export function ConvertNoteModal({ isOpen, onClose, onConversionComplete, preSel
           projectDescription: note.content
         }),
       })
-      
-      if (!response.ok) {
+        if (!response.ok) {
         const errorText = await response.text()
         console.error('Convert note API error:', errorText)
-        throw new Error('فشل في تحويل الملاحظة إلى مشروع')
+        
+        // محاولة استخراج تفاصيل الخطأ
+        let errorMessage = 'فشل في تحويل الملاحظة إلى مشروع'
+        try {
+          const errorData = JSON.parse(errorText)
+          if (errorData.code === 'PROJECT_KEY_CONFLICT') {
+            errorMessage = 'تعذر إنشاء المشروع. يرجى المحاولة مرة أخرى خلال بضع ثوانِ.'
+          } else if (errorData.details) {
+            errorMessage = errorData.details
+          }
+        } catch {
+          // إذا فشل تحليل JSON، استخدم الرسالة الافتراضية
+        }
+        
+        throw new Error(errorMessage)
       }
       
       const data = await response.json()
@@ -107,15 +120,16 @@ export function ConvertNoteModal({ isOpen, onClose, onConversionComplete, preSel
       }
 
       // Redirect to the new project
-      router.push(`/projects/${data.project.id}`)
-    } catch (error) {
+      router.push(`/projects/${data.project.id}`)    } catch (error) {
       console.error('Error converting note to project:', error)
+      const errorMessage = error instanceof Error ? error.message : 'فشل في تحويل الملاحظة إلى مشروع'
+      
       toast({
-        title: 'خطأ',
-        description: 'فشل في تحويل الملاحظة إلى مشروع',
+        title: 'خطأ في التحويل',
+        description: errorMessage,
         variant: 'destructive',
       })
-    } finally {
+    }finally {
       setConverting(false)
       onClose()
     }
