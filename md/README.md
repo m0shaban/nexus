@@ -1,165 +1,49 @@
-# Nexus MVP - The Synapse
+# Project Nexus: An AI-Powered Productivity & Strategy Hub
 
-[![Vercel Deployment](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/USERNAME/nexus)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<div align="center">
 
-> **«حوِّل الفوضى إلى فهم، والفهم إلى تأثير.»**
+**An integrated platform that transforms organizational management from passive tracking into an intelligent, data-driven strategic partnership.**
 
-نظام ذكي لتنظيم الأفكار وتحويلها إلى مشاريع قابلة للتنفيذ. هذا هو الإصدار التجريبي الأول (MVP) من وحدة "The Synapse" - المشبك العصبي.
+[![🚀 Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Experience_NEXUS-blue?style=for-the-badge&color=0066CC)](https://nexuss-rouge.vercel.app/)
+[![👨‍💻 Technical Manual](https://img.shields.io/badge/👨‍💻_For_Developers-Technical_Guide-green?style=for-the-badge&color=28a745)](https://github.com/m0shaban/nexus/blob/main/TECHNICAL_MANUAL.md)
 
-## المميزات الحالية
+</div>
 
-- ✅ **استقبال الملاحظات من تيليجرام**: إرسال نصوص، صور، مستندات، أو رسائل صوتية
-- ✅ **عرض فوري**: تظهر الملاحظات فوراً في الواجهة دون إعادة تحميل
-- ✅ **تحليل ذكي**: تلخيص الملاحظات وطرح أسئلة محفزة للتفكير باستخدام NVIDIA AI
-- ✅ **واجهة عربية**: تصميم جميل ومتجاوب يدعم اللغة العربية
-- ✅ **تحديث مباشر**: استخدام Supabase Realtime للتحديثات الفورية
+### The Strategic Imperative: From Data Silos to AI-Powered Strategy
 
-## التقنيات المستخدمة
-
-- **Frontend**: Next.js 15 + TypeScript + Tailwind CSS + shadcn/ui
-- **Backend**: Next.js API Routes
-- **Database**: Supabase (PostgreSQL + Realtime)
-- **AI**: NVIDIA API (llama-3.1-nemotron-ultra-253b-v1)
-- **Bot**: Telegram Bot API + Webhook
-- **Testing**: Vitest + jsdom
-
-## بدء الاستخدام
-
-### 1. استنساخ المشروع
-```bash
-git clone <repository-url>
-cd nexus
-npm install
-```
-
-### 2. إعداد متغيرات البيئة
-أنشئ ملف `.env.local` وأضف:
-
-```env
-# Supabase Configuration
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url_here
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key_here
-
-# Telegram Bot Configuration
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
-TELEGRAM_WEBHOOK_SECRET=your_webhook_secret_here
-
-# NVIDIA AI Configuration
-NVIDIA_API_KEY=your_nvidia_api_key_here
-NVIDIA_API_BASE_URL=https://integrate.api.nvidia.com/v1
-```
-
-### 3. إعداد قاعدة البيانات
-قم بإنشاء جدول `notes` في Supabase:
-
-```sql
-CREATE TABLE notes (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  user_id UUID,
-  content TEXT NOT NULL,
-  content_type TEXT DEFAULT 'text',
-  ai_summary TEXT,
-  ai_questions JSONB,
-  analysis_status TEXT CHECK (analysis_status IN ('pending', 'analyzing', 'completed', 'error')),
-  raw_telegram_message JSONB
-);
-
--- Enable Row Level Security (اختياري للتطوير)
-ALTER TABLE notes ENABLE ROW LEVEL SECURITY;
-
--- Enable Realtime
-ALTER PUBLICATION supabase_realtime ADD TABLE notes;
-```
-
-### 4. تشغيل التطبيق
-```bash
-npm run dev
-```
-
-افتح [http://localhost:3000](http://localhost:3000) في المتصفح.
-
-### 5. إعداد بوت تيليجرام
-1. أنشئ بوت جديد عبر [@BotFather](https://t.me/BotFather)
-2. احصل على token واضعه في `TELEGRAM_BOT_TOKEN`
-3. عيّن webhook للبوت:
-```bash
-curl -X POST "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "url": "https://your-domain.com/api/telegram-webhook",
-    "secret_token": "your_webhook_secret"
-  }'
-```
-
-## الاختبارات
-
-```bash
-# تشغيل الاختبارات
-npm test
-
-# تشغيل الاختبارات مع الواجهة
-npm run test:ui
-```
-
-## البناء والنشر
-
-```bash
-# بناء للإنتاج
-npm run build
-
-# تشغيل الإنتاج محلياً
-npm start
-```
-
-### النشر على Vercel
-1. ادفع الكود إلى GitHub
-2. اربط المستودع بـ Vercel
-3. أضف متغيرات البيئة في إعدادات Vercel
-4. احصل على URL التطبيق وعيّن webhook البوت إليه
-
-## كيفية الاستخدام
-
-1. **أرسل رسالة** إلى البوت على تيليجرام
-2. **شاهد الملاحظة** تظهر فوراً في التطبيق
-3. **اضغط "تحليل"** للحصول على ملخص وأسئلة محفزة
-4. **استكشف الأفكار** باستخدام الأسئلة المقترحة
-
-## الخطط المستقبلية
-
-### المرحلة 2 - The Catalyst
-- تحويل الملاحظات إلى مشاريع
-- توليد مهام قابلة للتنفيذ
-- نظام سلاسل الإنجاز
-
-### المرحلة 3 - The Oracle
-- محاكاة السيناريوهات
-- تحليل المخاطر المحتملة
-- صندوق رمل التجارب
-
-### المرحلة 4 - The Mirror
-- يوميات ذكية
-- تحليل الحالة النفسية
-- لوحة قيادة شخصية
-
-## المساهمة
-
-المشروع في مرحلة MVP ونرحب بالمساهمات:
-
-1. Fork المشروع
-2. أنشئ feature branch
-3. Commit التغييرات
-4. Push إلى Branch
-5. افتح Pull Request
-
-## الترخيص
-
-هذا المشروع مرخص تحت [MIT License](LICENSE).
+In today's competitive landscape, strategic alignment and execution speed are paramount. Traditional productivity tools often fail, creating data silos instead of actionable insights. NEXUS is architected to solve this fundamental challenge by creating a unified environment where **AI doesn't just assist—it strategizes, challenges, and optimizes** alongside your team.
 
 ---
 
-**الشعار**: «حوِّل الفوضى إلى فهم، والفهم إلى تأثير.»
-# nexus
-# nexus
+### ✨ Core Capabilities
+
+| Category | Feature | Icon |
+| :--- | :--- | :---: |
+| **Intelligent Strategy Partner** | "The Logos" AI analyzes plans, challenges assumptions, and identifies strategic weaknesses. | 🤖 |
+| **Unified Command Center** | A single-pane executive dashboard provides a real-time view of all strategic initiatives. | 🏛️ |
+| **Accelerated Execution Engine** | AI automatically converts high-level objectives into detailed, actionable project roadmaps. | ⚡️ |
+| **Performance Intelligence** | Advanced analytics that provide predictive insights into project outcomes and KPIs. | 📈 |
+
+---
+
+### 🛠️ Technology Foundation
+
+**Built on an enterprise-grade architecture for performance, security, and scalability.**
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![NVIDIA AI](https://img.shields.io/badge/NVIDIA%20NIM-76B900?style=flat-square&logo=nvidia&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+
+---
+
+### 🤝 Strategic Partnerships & Enterprise Inquiries
+
+For discussions regarding strategic implementation, custom enterprise features, or pilot programs, please initiate contact.
+
+**Contact:** [Mohamed Shaban](mailto:ENG.MOHAMED0SHABAN@GMAIL.COM) | [LinkedIn Profile](https://www.linkedin.com/in/moshabann/)
+
+---
+*© 2025 Mohamed Shaban. All rights reserved. Commercial License Required.*
